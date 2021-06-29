@@ -1,3 +1,3 @@
 # DesignPatternProxy
 
-Repor für die Vorstellung des Proxys Design Pattern
+Repro für die Vorstellung des Proxys Design Pattern
