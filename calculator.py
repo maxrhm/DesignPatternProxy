@@ -1,18 +1,20 @@
-import abc 
-
- 
+import abc
+import time
 
 class calculatorBase(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def calculate(self):
         pass
+
 class NumberMultiplier(calculatorBase):
     def calculate(self):
-        number = 1+1
-        return number
-
- 
-
+        result = 1
+        i = 2
+        while i <= 10:
+            result = result * i
+            time.sleep(1)
+            i = i + 1 
+        return result
 
 class NumberMultiplierProxy(calculatorBase):
     __realNumberMultiplier = None
@@ -20,9 +22,10 @@ class NumberMultiplierProxy(calculatorBase):
         if self.__realNumberMultiplier == None:
             self.__realNumberMultiplier = NumberMultiplier()
             self.__cachedValue = NumberMultiplier.calculate(self.__realNumberMultiplier)
-            return self.__cachedValue
-
- 
+        return self.__cachedValue
 
 test = NumberMultiplierProxy()
-print(test.calculate())
+i = 0
+while i < 10:
+    print(test.calculate())
+    i = i + 1
